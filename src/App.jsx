@@ -1,35 +1,92 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import {  useEffect, useState } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// let keyWord=()=> `asdfjkl;`.split(" ").sort(()=>Math.random()>0.5 ? 1: -1)
+// let keyWord=()=> `asdfjkl;  asdfjkl; asdfjkl;`
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// let keyWord=
+//   "asdfjkl; ,asdfjkd;s ,asddewfdwfjkl;"
+let keyWord="asdfjkl; , ;lkjfdsa , fdsajkl;, asdfjkl;, asdfjkl;, asdfjkl;, asdfjkl;, asdfjk;l ,asdf jk;,lasdfjkl; ,fdldska;,fjfkdls;,alskdfj aaassss,ddddffffjj,jkklll;;;;lkj, jkl;as"
+function App() {
+  let [userInput,setUserInput]=useState('')
+  let [words,setWords]=useState([])
+
+  // let key=useRef(keyWord())
+
+  useEffect(()=>{
+setWords(randomWord)
+  },[])
+
+  let randomWord=keyWord.split(",")
+// console.log(keyWord.split(","))
+//   return (
+//     <>
+//       <div>
+
+
+// <div className='container'>
+// {/* {words.map((word,index)=>{
+//     return (
+//       <>
+//       <div key={index}>
+
+//         {word}{index !== words.length - 1 && ' '}
+ 
+//         <p> </p>
+//         </div>
+//       </>
+//     )
+
+//   })} */}
+
+
+// </div>
+
+//  <input
+//   type='text'
+//   value={userInput}
+//   onChange={(e)=>setUserInput(e.target.value)}
+//  />
+//       </div>
+//     </>
+//   )
+
+return (
+  <div  className='main'>
+  {/* <div style={{border:"2px solid red"}}> */}
+  <div >
+
+  <div className='wordBox'>
+    {words.map((element, index) => (
+      <span key={index} className='word'>
+        {element}{' '}
+      </span>
+    ))}
+    </div>
+    <input
+  type='text'
+  value={userInput}
+  onChange={(e)=>setUserInput(e.target.value)}
+ />
+ <div>
+
+ <button>Start</button>
+ <button>Restart</button>
+ </div>
+  </div>
+  <div className='timmerDiv'>
+  <div>
+  <h2>Timmer Clock</h2>
+  <h2>5</h2>
+
+  </div>
+
+
+  </div>
+
+  </div>
+);
 }
 
 export default App
