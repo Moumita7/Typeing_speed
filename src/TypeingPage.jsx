@@ -1,8 +1,18 @@
 
+
+
+
+
+
 import {  useEffect, useState } from 'react'
+import { startTypeing, finishTypeing, updatedTypeingKey, checkAccuracy } from './redux/action';
+
 import './App.css'
 import { keyWord } from './Words'
+import { useDispatch, useSelector } from 'react-redux';
 
+// import { useDispatch, useSelector } from 'react-redux';
+// import { startTypeing } from './redux/action';
 
 function TypeingPage() {
   let [userInput,setUserInput]=useState('')
@@ -19,10 +29,15 @@ function TypeingPage() {
 
   // let textInput=useRef(null)
   // const [status,setStatus]=useState("waiting")
+  const dispatch = useDispatch();
+  // const accuracy = useSelector((store) => store.accuracy);
   
+
 
   var timmer;
   useEffect(()=>{
+    dispatch(startTypeing());
+
     timmer=setInterval(()=>{
 setSec(sec+1)
 if(sec===59){
@@ -51,14 +66,14 @@ let stopp=()=>{
 let charClass=(wordIdx,charIdx,char)=>{
   if(wordIdx===currWordIndex && charIdx===currCharIndex && currChar){
     if(char ===currChar){
-      // return `background-color:"green"`
+      return `greenn`
       // console.log("c",char)
       // console.log("cu",currChar)
 
 
 
     }else{
-      // return `background-color:"red"`
+      return `redd`
     
     
 
@@ -80,7 +95,11 @@ let handleKeyDown=({keyCode,key})=>{
     setUserInput("")
     setCurrWordIndex(currWordIndex+1)
     setCurrCharIndex(-1)
-  }else{
+  }else if(keyCode===8){
+    setCurrCharIndex(currCharIndex-1)
+    setCurrChar("")
+  }
+  else{
     setCurrCharIndex(currCharIndex+1)
     setCurrChar(key)
   }
@@ -135,6 +154,7 @@ return (
 
  <div style={{display:"flex"}}>
   <h3 style={{color:"green"}}>Acuracy :</h3>
+  {/* <h1>{accuracy}</h1> */}
   {/* <h3>{NaN ? Math.round((right/(right+wrong))*100):"0"}%</h3> */}
   <h3 style={{color:"green"}}>{ Math.round((right/(right+wrong))*100)}%</h3>
 

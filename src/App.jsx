@@ -1,5 +1,5 @@
 import AllRoutes from "./AllRoutes"
-import Home from "./Home"
+// import Home from "./Home"
 
 
 const App = () => {

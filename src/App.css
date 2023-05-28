@@ -20,7 +20,7 @@
 .wordBox{
      /* border: 2px solid rgb(23, 21, 2);  */
      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-     height: 30vh;
+     height: auto;
      padding: 10px;
      margin: 10px;
      background-color: #8DCC6E;
@@ -70,4 +70,14 @@
   border-radius: 80%;
   padding: 50px;
 
+}
+
+.greenn{
+  background-color: #327a0e;
+  padding: 4px;
+
+}
+.redd{
+  background-color: red;
+  padding: 1px;
 }
